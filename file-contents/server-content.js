@@ -19,7 +19,7 @@ app.use(webpackHotMiddleware(compiler));
 app.use(express.static('./src'));
 app.use(express.static('./node_modules'));
 
-app.listen(3000, () => {
+app.listen(${port}, () => {
     console.log('server started on port ${port}. Wait webpack bundle')
 });
     `.trim()

@@ -11,48 +11,9 @@
         createMainCss = require('./create-files/create-main-css'),
         createServer = require('./create-files/create-server'),
         createWebpack = require('./create-files/create-webpack'),
-        packageModifier = require('./modifiers/packageModifier'),
-        installer = require('./modifiers/installer');
-
-    function createConfig() {
-        const config = {
-                b: false,
-                r: false,
-                port: 3000
-            },
-            { argv } = process;
-
-        if (!!~argv.indexOf('-b')) {
-            config.b = true;
-        }
-        if (!!~argv.indexOf('-r')) {
-            config.r = true;
-        }
-        if (!!~argv.indexOf('--port')) {
-            var port = argv[argv.indexOf('--port')+1];
-            if (Number(port)) {
-                config.port = Number(port);
-            }
-        }
-        return config
-
-    }
-
-    const conf = createConfig();
-    console.log(conf);
-
-    // packageModifier()
-    //     .then(data => {
-    //         console.log('it works ', data);
-    //         console.log('installing express...');
-    //         return installer(conf.b, conf.r);
-    //     })
-    //     .then(data => {
-    //         console.log('RESULT ', data);
-    //     })
-    //     .catch( err => {
-    //         console.err(err.name, err.message, err.stack);
-    //     });
+        packageModifier = require('./modifiers/package-modifier'),
+        installer = require('./modifiers/installer'),
+        config = require('./modifiers/create-config');
 
     createDirs()
         .then(res => {
@@ -66,27 +27,27 @@
         })
         .then(res => {
             console.info(res);
-            const app = createAppComponent(conf.b),
-                main = createMainComponent(conf.r);
+            const app = createAppComponent(config.b),
+                main = createMainComponent(config.r);
             return Promise.all([app, main]);
         })
         .then(res => {
             console.info(res);
-            if (conf.b === true) {
+            if (config.b === true) {
                 return createMainHtml(true)
             } else {
-                var h = createMainHtml(false),
+                const h = createMainHtml(false),
                     c =createMainCss();
                 return Promise.all([h, c])
             }
         })
         .then(res => {
             console.info(res);
-            return createServer(conf.port);
+            return createServer(config.port);
         })
         .then(res => {
             console.info(res);
-            return createWebpack(conf.b);
+            return createWebpack(config.b);
         })
         .then(res => {
             console.info(res);
@@ -95,7 +56,7 @@
         .then(data => {
             console.log(data);
             console.info('installing express...');
-            return installer(conf.b, conf.r);
+            return installer(config.b, config.r);
         })
         .then(data => {
             console.log('RESULT ', data);
@@ -104,34 +65,3 @@
             console.error(err.name, err.message, err.stack);
         });
 }());
-
-
-// console.log(process.argv);
-// process.stdout.write('Hello world\n');
-//
-// var questions = [
-//     'Your name?',
-//     'Your hobby?',
-//     'Your language?'
-// ], answer = [];
-//
-// var ask = (function ask() {
-//     var i = 0;
-//     return function() {
-//         if (i >= questions.length) process.exit();
-//         process.stdout.write(`${questions[i]} > `);
-//         i+=1;
-//     }
-// }());
-//
-// ask();
-//
-// process.stdin.on('data', data => {
-//    process.stdout.write('\n');
-//    answer.push(data.toString().trim());
-//    ask();
-// });
-//
-// process.on('exit', () => {
-//     console.log(answer);
-// });
