@@ -15,7 +15,7 @@
         installer = require('./modifiers/installer'),
         config = require('./modifiers/create-config');
 
-    createDirs()
+    createDirs(config.r)
         .then(res => {
             if (!res) console.info('all folders already exists');
             else console.info(res);
