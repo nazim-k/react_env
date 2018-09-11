@@ -5,7 +5,7 @@ module.exports = (function() {
         express_pkg = ['install', '--save', 'express'],
         reactENV_pkg = ['install', '--save-dev', 'react', 'react-dom', 'prop-types', 'webpack', 'webpack-cli', 'webpack-dev-middleware', 'webpack-hot-middleware', 'babel-cli', 'babel-core', 'babel-loader', 'babel-preset-env', 'babel-preset-react', 'html-webpack-plugin'],
         bootstrap_pkg = ['bootstrap', 'jquery', 'popper.js'],
-        redux_pkg = ['redux', 'react-redux, babel-plugin-transform-object-rest-spread'];
+        redux_pkg = ['redux', 'react-redux', 'babel-plugin-transform-object-rest-spread'];
 
     return function installer(btstr, rdx) {
         var pkg, dev_pkg, installer, dev_installer;

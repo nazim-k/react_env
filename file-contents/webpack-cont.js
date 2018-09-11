@@ -4,9 +4,9 @@ module.exports = (function() {
             return `
 'use strict';
 
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const path = require('path'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -49,9 +49,9 @@ module.exports = {
             return `
 'use strict';
 
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const path = require('path'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    webpack = require('webpack');
 
 module.exports = {
     mode: 'development',

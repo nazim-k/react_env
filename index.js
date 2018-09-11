@@ -5,7 +5,8 @@
     const createDirs = require('./create-files/create-dirs'),
         createEditorConf = require('./create-files/create-editor-conf'),
         createGitIgnore = require('./create-files/create-gitignore'),
-        createMainComponent = require('./create-files/create-main-react-comp'),
+        createAppComponent = require('./create-files/create-app-component'),
+        createMainComponent = require('./create-files/create-main-component'),
         createMainHtml = require('./create-files/create-main-html'),
         createMainCss = require('./create-files/create-main-css'),
         createServer = require('./create-files/create-server'),
@@ -40,57 +41,68 @@
     const conf = createConfig();
     console.log(conf);
 
-    packageModifier()
+    // packageModifier()
+    //     .then(data => {
+    //         console.log('it works ', data);
+    //         console.log('installing express...');
+    //         return installer(conf.b, conf.r);
+    //     })
+    //     .then(data => {
+    //         console.log('RESULT ', data);
+    //     })
+    //     .catch( err => {
+    //         console.err(err.name, err.message, err.stack);
+    //     });
+
+    createDirs()
+        .then(res => {
+            if (!res) console.info('all folders already exists');
+            else console.info(res);
+            return createEditorConf();
+        })
+        .then(res => {
+            console.info(res);
+            return createGitIgnore();
+        })
+        .then(res => {
+            console.info(res);
+            const app = createAppComponent(conf.b),
+                main = createMainComponent(conf.r);
+            return Promise.all([app, main]);
+        })
+        .then(res => {
+            console.info(res);
+            if (conf.b === true) {
+                return createMainHtml(true)
+            } else {
+                var h = createMainHtml(false),
+                    c =createMainCss();
+                return Promise.all([h, c])
+            }
+        })
+        .then(res => {
+            console.info(res);
+            return createServer(conf.port);
+        })
+        .then(res => {
+            console.info(res);
+            return createWebpack(conf.b);
+        })
+        .then(res => {
+            console.info(res);
+            return packageModifier();
+        })
         .then(data => {
-            console.log('it works ', data);
-            console.log('installing express...');
+            console.log(data);
+            console.info('installing express...');
             return installer(conf.b, conf.r);
         })
         .then(data => {
             console.log('RESULT ', data);
         })
         .catch( err => {
-            console.err(err.name, err.message, err.stack);
-        })
-
-    // createDirs()
-    //     .then(res => {
-    //         if (!res) console.info('all folders already exists');
-    //         else console.info(res);
-    //         return createEditorConf()
-    //     })
-    //     .then(res => {
-    //         console.info(res);
-    //         return createGitIgnore()
-    //     })
-    //     .then(res => {
-    //         console.info(res);
-    //         return createMainComponent(conf.b)
-    //     })
-    //     .then(res => {
-    //         console.info(res);
-    //         if (config.b === true) {
-    //             return createMainHtml(true)
-    //         } else {
-    //             var h = createMainHtml(false),
-    //                 c =createMainCss();
-    //             return Promise.all([h, c])
-    //         }
-    //     })
-    //     .then(res => {
-    //         console.info(res);
-    //         return createServer(conf.port)
-    //     })
-    //     .then(res => {
-    //         console.info(res);
-    //         return createWebpack(conf.b)
-    //     })
-    //     .then(res => {
-    //         console.info(res);
-    //     })
-    //     .catch( err => {
-    //         console.error(err.name, err.message, err.stack);
-    //     });
+            console.error(err.name, err.message, err.stack);
+        });
 }());
 
 

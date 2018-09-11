@@ -4,7 +4,7 @@ module.exports = (function(){
     const fs = require('fs'),
         { srcPath, componentsPath } =require('../CONFIG');
 
-    return function() {
+    return function(rdx) {
         return new Promise((resolve, reject) => {
             if(!fs.existsSync(srcPath))
                 fs.mkdir(srcPath, err => {

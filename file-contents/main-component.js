@@ -1,39 +1,19 @@
 module.exports = (function() {
-    return function(b) {
-        if (b === true) {
-            return `
-'use strict';
-
+    return function(rdx) {
+        return `
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-const App = () => {
+const MainComponent = () => {
+
     return(
-        <div className="container text-center">
+        <div>
             <h1>React ENV</h1>
         </div>
     )
+
 };
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+export default MainComponent
     `.trim()
-        } else {
-            return `
-'use strict';
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-const App = () => {
-    return(
-        <div className="main">
-            <h1>React ENV</h1>
-        </div>
-    )
-};
-
-ReactDOM.render(<App/>, document.getElementById('root'));
-    `.trim()
-        }
     }
 }());
