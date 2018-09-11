@@ -1,0 +1,29 @@
+{
+	"name": "reactenv",
+	"version": "0.0.1",
+	"description": "Create evironment for react",
+	"main": "index.js",
+	"bin": {
+		"react_env": "./index.js"
+	},
+	"scripts": {
+		"test": "test",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh: //git@bitbucket.org/nazim-k/reactenv.git"
+	},
+	"keywords":  [
+		"react",
+		"environment",
+		"react",
+		"with",
+		"express",
+		"and",
+		"webpack"
+	],
+	"author": "nazim.k",
+	"license": "ISC",
+	"homepage": "https: //bitbucket.org/nazim-k/reactenv#readme"
+}
