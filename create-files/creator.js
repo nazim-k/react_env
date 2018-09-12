@@ -5,16 +5,11 @@ module.exports = (function() {
     return function(path, content, msg) {
 
         return new Promise( (resolve, reject) => {
-            if (fs.existsSync(path)) {
-                console.log(`${path} file already exist`);
-                resolve(`${path} file already exist`)
-            } else {
-                fs.writeFile(path, content, err => {
-                    if (err)
-                        reject(err);
-                    resolve(msg);
-                })
-            }
+            fs.writeFile(path, content, err => {
+                if (err)
+                    reject(err);
+                resolve(msg);
+            })
         })
 
     };

@@ -6,6 +6,6 @@ module.exports = (function() {
         creator = require('./creator');
 
     return function () {
-        creator(containerFilePath, containerContent, 'container created')
+        return creator(containerFilePath, containerContent, 'container created')
     }
 }());

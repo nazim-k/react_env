@@ -4,7 +4,7 @@ module.exports = (function() {
     const path = require('path');
 
     function createCONFIG() {
-        this.rootPath = __dirname;
+        this.rootPath = process.cwd();
         this.serverPath = path.resolve(this.rootPath, 'server.js');
         this.editorConfPath = path.resolve(this.rootPath, '.editorconfig');
         this.gitIgnorePath = path.resolve(this.rootPath, '.gitignore');

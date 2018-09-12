@@ -7,7 +7,7 @@ module.exports = (function() {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainContainer from './Containers/MainContainer';
+import MainContainer from './containers';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { reducer } from './reducers';

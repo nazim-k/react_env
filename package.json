@@ -1,6 +1,6 @@
 {
-  "name": "reactenv",
-  "version": "0.0.1",
+  "name": "@nazim.k/reactenv",
+  "version": "0.0.3",
   "description": "Create evironment for react",
   "main": "index.js",
   "bin": {
@@ -24,5 +24,8 @@
   ],
   "author": "nazim.k",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/nazim-k/reactenv#readme"
+  "homepage": "https://bitbucket.org/nazim-k/reactenv#readme",
+  "dependencies": {
+    "user": "0.0.0"
+  }
 }

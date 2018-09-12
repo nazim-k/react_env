@@ -6,6 +6,6 @@ module.exports = (function() {
         creator = require('./creator');
 
     return function () {
-        creator(actionFilePath, actionContent, 'action created')
+        return creator(actionFilePath, actionContent, 'action created')
     }
 }());

@@ -2,7 +2,8 @@
 (function() {
     'use strict';
 
-    const initPackage = require('./modifiers/init-package'),
+    const checkoutDir = require('./modifiers/checkout-dir'),
+        initPackage = require('./modifiers/init-package'),
         createDirs = require('./create-files/create-dirs'),
         createEditorConf = require('./create-files/create-editor-conf'),
         createGitIgnore = require('./create-files/create-gitignore'),
@@ -18,9 +19,18 @@
         createAction = require('./create-files/create-action'),
         packageModifier = require('./modifiers/package-modifier'),
         installer = require('./modifiers/installer'),
+        createLoader = require('./modifiers/loader'),
         config = require('./modifiers/create-config');
 
-    createDirs(config.r)
+    checkoutDir()
+        .then(data => {
+            console.info(data);
+            return initPackage();
+        })
+        .then(res => {
+            console.info(res);
+            return createDirs(config.r);
+        })
         .then(res => {
             if (!res) console.info('all folders already exists');
             else console.info(res);
@@ -61,11 +71,16 @@
         })
         .then(data => {
             console.log(data);
-            console.info('installing express...');
-            return installer(config.b, config.r);
+            console.info('install packages');
+            let loader = createLoader();
+            return {
+                data: installer(config.b, config.r),
+                loader
+            };
         })
-        .then(data => {
-            console.log('RESULT ', data);
+        .then(res => {
+            res.loader.stop();
+            console.info(res.data);
         })
         .catch( err => {
             console.error(err.name, err.message, err.stack);

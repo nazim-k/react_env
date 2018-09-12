@@ -6,7 +6,6 @@ module.exports = (function () {
         creator = require('./creator');
 
     return function() {
-        console.log('type of ', initialState, ' is ',  typeof initialState);
         return creator(initialStatePath, initialState, 'initial state created')
     }
 }());

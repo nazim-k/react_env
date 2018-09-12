@@ -6,6 +6,6 @@ module.exports = (function() {
        creator = require('./creator');
 
    return function () {
-       creator(reducerFilePath, reducerContent, 'reducer created')
+       return creator(reducerFilePath, reducerContent, 'reducer created')
    }
 }());

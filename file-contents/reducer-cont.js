@@ -5,7 +5,7 @@ module.exports = (function() {
 'use strict';
 
 import { CHANGE_HEAD, CHANGE_COLOR } from '../actions';
-import initialState from './initial-state';
+import initialState from './initialState';
 
 export function reducer(state = initialState, action) {
 
