@@ -2,7 +2,8 @@
 (function() {
     'use strict';
 
-    const createDirs = require('./create-files/create-dirs'),
+    const initPackage = require('./modifiers/init-package'),
+        createDirs = require('./create-files/create-dirs'),
         createEditorConf = require('./create-files/create-editor-conf'),
         createGitIgnore = require('./create-files/create-gitignore'),
         createAppComponent = require('./create-files/create-app-component'),
