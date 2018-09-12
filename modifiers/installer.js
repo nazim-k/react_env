@@ -26,16 +26,13 @@ module.exports = (function() {
         }
 
         return new Promise( (resolve, reject) => {
-            // resolve({ pkg, dev_pkg });
             /**
              * just log which packages should be installed instead of real install
              *
              * real install part is commented
              */
             installer = spawn('npm', pkg);
-            console.info('INSTALLING PACKAGES');
             installer.on('close', function() {
-
                 dev_installer = spawn('npm', dev_pkg);
                 dev_installer.on('close', function() {
                     resolve('ALL PACKAGES INSTALLED');

@@ -71,6 +71,7 @@
         })
         .then(data => {
             console.info(data);
+            console.info('INSTALLING PACKAGES');
             let loader = createLoader(100);
             return new Promise( (resolve, reject) => {
                 installer(config.b, config.r)
