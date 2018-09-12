@@ -27,12 +27,10 @@ module.exports = (function() {
                 allObj = pkg.match(obj);
                 allObj.forEach(ob => {
                     var newOb;
-                    console.log(ob)
                     newOb = ob.replace(/\t/g, '\t\t');
                     pkg = pkg.replace(ob, newOb);
                 });
 
-                console.log(pkg);
                 fs.writeFile(path.resolve(__dirname, 'test.json'), pkg, err=> {
                     reject(err);
                 });

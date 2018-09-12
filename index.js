@@ -11,6 +11,10 @@
         createMainCss = require('./create-files/create-main-css'),
         createServer = require('./create-files/create-server'),
         createWebpack = require('./create-files/create-webpack'),
+        createInitState = require('./create-files/create-init-state'),
+        createReducer = require('./create-files/create-reducer'),
+        createContainer = require('./create-files/create-container'),
+        createAction = require('./create-files/create-action'),
         packageModifier = require('./modifiers/package-modifier'),
         installer = require('./modifiers/installer'),
         config = require('./modifiers/create-config');
@@ -27,9 +31,10 @@
         })
         .then(res => {
             console.info(res);
-            const app = createAppComponent(config.b),
-                main = createMainComponent(config.r);
-            return Promise.all([app, main]);
+            const waitFor = [createAppComponent(config.r), createMainComponent(config.b, config.r)];
+            if (config.r)
+                waitFor.push(createInitState(), createReducer(), createContainer(), createAction());
+            return Promise.all(waitFor);
         })
         .then(res => {
             console.info(res);

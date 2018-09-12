@@ -14,9 +14,8 @@ module.exports = (function(){
         })
     }
 
-    function createSrcSubFolders() {
-        const folders = Array.from(arguments),
-            waitFor = [];
+    function createSrcSubFolders(folders) {
+        const waitFor = [];
         for ( let i =0, max = folders.length; i < max; i+=1 ) {
             waitFor.push(createFolder(folders[i]))
         }
@@ -24,32 +23,27 @@ module.exports = (function(){
     }
 
     return function(rdx) {
+        const  folders = [componentsPath];
+
+        if (rdx)
+            folders.push(actionsPath, containersPath, reducersPath);
+
         return new Promise((resolve, reject) => {
             if(!fs.existsSync(srcPath))
                 fs.mkdir(srcPath, err => {
                     if (err)
                         reject(err);
 
-                    if (rdx) {
-                        createSrcSubFolders(componentsPath, actionsPath, containersPath, reducersPath)
-                            .then(res => resolve(res))
-                            .catch(err => reject(err));
-                    } else {
-                        createSrcSubFolders(componentsPath)
-                            .then(res => resolve(res))
-                            .catch(err => reject(err));
-                    }
+                    createSrcSubFolders(folders)
+                        .then(res => resolve(res))
+                        .catch(err => reject(err));
                 });
-            else if (!fs.existsSync(componentsPath))
-                if (rdx) {
-                    createSrcSubFolders(componentsPath, actionsPath, containersPath, reducersPath)
-                        .then(res => resolve(res))
-                        .catch(err => reject(err));
-                } else {
-                    createSrcSubFolders(componentsPath)
-                        .then(res => resolve(res))
-                        .catch(err => reject(err));
-                }
+            else if (!fs.existsSync(componentsPath)) {
+
+                createSrcSubFolders(folders)
+                    .then(res => resolve(res))
+                    .catch(err => reject(err));
+            }
             else reject(new Error('src folder and Components folder in it already exists'))
         });
     }

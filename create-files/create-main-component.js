@@ -5,8 +5,8 @@ module.exports = (function() {
         mainComponentContent = require('../file-contents/main-component'),
         creator = require('./creator');
 
-    return function(rdx) {
-        const content = mainComponentContent(rdx);
+    return function(btstr, rdx) {
+        const content = mainComponentContent(btstr, rdx);
         return creator(MainComponentPath, content, 'main component created')
     }
 

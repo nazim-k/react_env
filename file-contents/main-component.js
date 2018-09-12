@@ -1,13 +1,36 @@
 module.exports = (function() {
-    return function(rdx) {
-        return `
+    'use strict';
+
+    return function(btstr, rdx) {
+
+        const hclass = btstr ? '{ "text-center pt-5 pb-5 text-white " + color }' : '"head"',
+            iclass = btstr ? '"form-control"': '"control"';
+
+        if (rdx) {
+            return `
+'use strict';
 import React from 'react';
 
-const MainComponent = () => {
+const MainComponent = (props) => {
+    const { head, color, onBtnClick, onBgClick } = props,
+        newColor = color === 'bg-info'
+            ? 'bg-dark'
+            : 'bg-info';
 
     return(
         <div>
-            <h1>React ENV</h1>
+            <h1 className=${hclass}
+                onClick={ () => { onBgClick(newColor) } }
+                role="link"
+            >
+                { head }
+            </h1>
+            <input
+                className=${iclass}
+                type="text"
+                value={ head }
+                onChange={ (e) => { onBtnClick(e.target.value)} }
+            />
         </div>
     )
 
@@ -15,5 +38,23 @@ const MainComponent = () => {
 
 export default MainComponent
     `.trim()
+        } else {
+            return `
+'use strict';
+import React from 'react';
+
+const MainComponent = () => {
+
+    return(
+        <div>
+            <h1 className=${hclass}>React_ENV</h1>
+        </div>
+    )
+
+};
+
+export default MainComponent
+    `.trim()
+        }
     }
 }());
