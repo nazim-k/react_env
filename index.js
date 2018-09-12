@@ -72,7 +72,7 @@
         .then(data => {
             console.log(data);
             console.info('install packages');
-            let loader = createLoader();
+            let loader = createLoader(100);
             return {
                 data: installer(config.b, config.r),
                 loader
@@ -84,5 +84,6 @@
         })
         .catch( err => {
             console.error(err.name, err.message, err.stack);
+            process.exit();
         });
 }());
