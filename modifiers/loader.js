@@ -1,7 +1,7 @@
 module.exports = (function() {
    'use strict';
 
-   return function() {
+   return function(time) {
        const symbols = Array.from('          downloading'),
 
            loader = setInterval(() => {
