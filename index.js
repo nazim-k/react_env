@@ -70,17 +70,20 @@
             return packageModifier();
         })
         .then(data => {
-            console.log(data);
-            console.info('install packages');
+            console.info(data);
             let loader = createLoader(100);
-            return {
-                data: installer(config.b, config.r),
-                loader
-            };
+            return new Promise( (resolve, reject) => {
+                installer(config.b, config.r)
+                    .then(data => {
+                        loader.stop();
+                        resolve(data);
+                    })
+                    .catch(err => reject(err))
+            })
         })
-        .then(res => {
-            res.loader.stop();
-            console.info(res.data);
+        .then(data => {
+            console.info(data);
+            process.exit();
         })
         .catch( err => {
             console.error(err.name, err.message, err.stack);

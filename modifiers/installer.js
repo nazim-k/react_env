@@ -39,7 +39,6 @@ module.exports = (function() {
                 dev_installer = spawn('npm', dev_pkg);
                 dev_installer.on('close', function() {
                     resolve('ALL PACKAGES INSTALLED');
-                    process.exit();
                 });
                 dev_installer.on('error', function(err) {
                     reject(err);
