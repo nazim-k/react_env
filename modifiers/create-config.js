@@ -3,7 +3,7 @@ module.exports = (function() {
     const config = {
             b: false,
             r: false,
-            dev_mode: false
+            dev_mode: false,
             port: 3000
         },
         { argv } = process;

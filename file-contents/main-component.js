@@ -24,7 +24,7 @@ const MainComponent = (props) => {
         <div>
             <h1 className=${hclass}
                 onClick={ () => { onBgClick(newColor) } }
-                role="link"
+                onMouseOver={ (e) => { e.target.style.cursor = 'pointer' } }
             >
                 { head }
             </h1>

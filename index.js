@@ -77,6 +77,7 @@
                 installer(config.b, config.r, config.dev_mode)
                     .then(data => {
                         loader.stop();
+                        process.stdout.write('\r');
                         console.info(data);
                         resolve();
                     })

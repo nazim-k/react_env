@@ -5,7 +5,7 @@ module.exports = (function() {
 'use strict';
 
 import { connect } from 'react-redux';
-import MainComponent from '../Components';
+import MainComponent from '../components';
 import { changeHead, changeColor } from '../actions'
 
 const mapStateToProps = (state) => {
