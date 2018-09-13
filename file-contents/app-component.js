@@ -36,7 +36,7 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainComponent from './Components';
+import MainComponent from './components';
 
 const App = () => {
     return(

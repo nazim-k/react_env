@@ -2,8 +2,8 @@ module.exports = (function() {
     'use strict';
 
     const { spawn } = require('child_process'),
-        express_pkg = ['install', '--save', 'express'],
-        reactENV_pkg = ['install', '--save-dev', 'react', 'react-dom', 'prop-types', 'webpack', 'webpack-cli', 'webpack-dev-middleware', 'webpack-hot-middleware', 'babel-cli', 'babel-core', 'babel-loader', 'babel-loader@7', 'babel-preset-env', 'babel-preset-react', 'html-webpack-plugin'],
+        express_pkg = ['install', '--save', 'express', '@babel/polyfill'],
+        reactENV_pkg = ['install', '--save-dev', 'react', 'react-dom', 'prop-types', 'webpack', 'webpack-cli', 'webpack-dev-middleware', 'webpack-hot-middleware', '@babel/cli', '@babel/core', 'babel-loader', '@babel/preset-env', '@babel/preset-react', 'html-webpack-plugin'],
         bootstrap_pkg = ['bootstrap', 'jquery', 'popper.js'],
         redux_pkg = ['redux', 'react-redux', 'babel-plugin-transform-object-rest-spread'];
 
@@ -26,11 +26,6 @@ module.exports = (function() {
         }
 
         return new Promise( (resolve, reject) => {
-            /**
-             * just log which packages should be installed instead of real install
-             *
-             * real install part is commented
-             */
             installer = spawn('npm', pkg);
             installer.on('close', function() {
                 dev_installer = spawn('npm', dev_pkg);

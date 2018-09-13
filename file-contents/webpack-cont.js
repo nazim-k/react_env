@@ -10,7 +10,7 @@ const path = require('path'),
 
 module.exports = {
     mode: 'development',
-    entry: ['babel-polyfill', './src/index.js', 'webpack-hot-middleware/client?reload=true'],
+    entry: ['@babel/polyfill', './src/index.js', 'webpack-hot-middleware/client?reload=true'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundel.js',
@@ -31,7 +31,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'react']
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
             },
@@ -55,7 +55,7 @@ const path = require('path'),
 
 module.exports = {
     mode: 'development',
-    entry: ['babel-polyfill', './src/index.js', 'webpack-hot-middleware/client?reload=true'],
+    entry: ['@babel/polyfill', './src/index.js', 'webpack-hot-middleware/client?reload=true'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundel.js',
@@ -76,7 +76,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'react']
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
             }

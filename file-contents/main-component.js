@@ -3,8 +3,11 @@ module.exports = (function() {
 
     return function(btstr, rdx) {
 
-        const hclass = btstr ? '{ "text-center pt-5 pb-5 text-white " + color }' : '"head"',
-            iclass = btstr ? '"form-control"': '"control"';
+        const hclass = (btstr && rdx)
+            ? '{ "text-center pt-5 pb-5 text-white " + color }'
+            : btstr ? '"text-center pt-5 pb-5 text-white bg-info"'
+            : '"bg-info"',
+            iclass = '"form-control"';
 
         if (rdx) {
             return `
