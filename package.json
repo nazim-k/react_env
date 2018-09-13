@@ -1,6 +1,6 @@
 {
   "name": "@nazim.k/reactenv",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Create evironment for react",
   "main": "index.js",
   "bin": {
