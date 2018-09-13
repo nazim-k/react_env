@@ -74,18 +74,16 @@
             console.info('INSTALLING PACKAGES');
             let loader = createLoader(100);
             return new Promise( (resolve, reject) => {
-                installer(config.b, config.r)
+                installer(config.b, config.r, config.dev_mode)
                     .then(data => {
                         loader.stop();
-                        resolve(data);
+                        console.info(data);
+                        resolve();
                     })
                     .catch(err => reject(err))
             })
         })
-        .then(data => {
-            console.info(data);
-            process.exit();
-        })
+        .then(() => process.exit())
         .catch( err => {
             console.error(err.name, err.message, err.stack);
             process.exit();

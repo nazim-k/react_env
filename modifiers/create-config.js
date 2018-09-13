@@ -3,6 +3,7 @@ module.exports = (function() {
     const config = {
             b: false,
             r: false,
+            dev_mode: false
             port: 3000
         },
         { argv } = process;
@@ -11,6 +12,9 @@ module.exports = (function() {
     }
     if (!!~argv.indexOf('-r')) {
         config.r = true;
+    }
+    if (!!~argv.indexOf('--dev')) {
+        config.dev_mode = true;
     }
     if (!!~argv.indexOf('--port')) {
         var port = argv[argv.indexOf('--port')+1];
