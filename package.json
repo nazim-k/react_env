@@ -16,11 +16,16 @@
   "keywords": [
     "react",
     "environment",
-    "react",
-    "with",
     "express",
-    "and",
-    "webpack"
+    "babel",
+    "webpack",
+    "redux",
+    "bootstrap",
+    "hot",
+    "reload",
+    "livereload",
+    "create",
+    "app"
   ],
   "author": "nazim.k",
   "license": "ISC",

@@ -1,6 +1,6 @@
-readme
+react_env
 ---
-*react_env* quickly create react project with express as a server and webpack. Created project can include bootstrap and redux.
+*react_env* cli quickly create react project with express as a server and webpack. Created project can include bootstrap and redux.
 
 ##### Quick start react project with express server.
  - create react environment (folders, files, config)
@@ -29,7 +29,7 @@ By default port is 3000
 
 >Create react project with bootstrap:<br>
 ```bash
-  react_env-b
+  react_env -b
 ```
 
 
