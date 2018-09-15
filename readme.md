@@ -1,6 +1,6 @@
 react_env
 ---
-*react_env* cli quickly create react project with express as a server and webpack. Created project can include bootstrap and redux.
+*react_env* cli quickly creates react project with express as a server and webpack. Created project can include bootstrap and redux.
 
 ##### Quick start react project with express server.
  - create react environment (folders, files, config)
@@ -46,7 +46,7 @@ React component will automatically connected to redux store.
 ```
 
 
- By default react_env install specific version of npm packages.
+ By default react_env installs specific version of npm packages.
  To install packages without _package_**@<version\>** add __-dev__ flag
 
 

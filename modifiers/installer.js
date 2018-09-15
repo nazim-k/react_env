@@ -25,7 +25,7 @@ module.exports = (function() {
             pkg = def_pkg;
             dev_pkg = reactENV_pkg;
         } else if (btstr && !rdx) {
-            pkg = express_pkg.concat(bootstrap_pkg);
+            pkg = def_pkg.concat(bootstrap_pkg);
             dev_pkg = reactENV_pkg;
         } else if (rdx && !btstr) {
             pkg = def_pkg;
