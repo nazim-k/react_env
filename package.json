@@ -1,6 +1,6 @@
 {
   "name": "reactenv",
-  "version": "0.0.2",
+  "version": "1.0.3",
   "description": "Create evironment for react",
   "main": "index.js",
   "bin": {
