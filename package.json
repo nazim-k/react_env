@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/nazim-k/reactenv.git"
+    "url": "git+ssh://git@github.com:nazim-k/react_env.git"
   },
   "keywords": [
     "react",
@@ -24,5 +24,5 @@
   ],
   "author": "nazim.k",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/nazim-k/reactenv#readme"
+  "homepage": "https://github.com/nazim-k/react_env#README.md"
 }
